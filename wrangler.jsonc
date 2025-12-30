@@ -2,10 +2,6 @@
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "r4men-com",
@@ -14,6 +10,14 @@
 	"build": {
 		"command": "npx opennextjs-cloudflare build"
 	},
+	"routes": [
+		{
+			"pattern": "www.r4men.com",
+			"custom_domain": true
+		}
+	],
+	"workers_dev": false,
+	"preview_urls": true,
 	"compatibility_flags": [
 		"nodejs_compat",
 		"global_fetch_strictly_public"
