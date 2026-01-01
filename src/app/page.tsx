@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -14,6 +15,16 @@ export default function Home() {
 						.
 					</li>
 					<li className="tracking-[-.01em]">Save and see your changes instantly.</li>
+					<li className="tracking-[-.01em]">Check out my{" "}
+						<Link href={"/mods"} className="bg-black/5 dark:bg-white/6 font-mono font-semibold px-1 py-0.5 rounded">
+						mods
+						</Link>
+						</li>
+					<li className="tracking-[-.01em]">Check out my{" "}
+						<Link href={"/projects"} className="bg-black/5 dark:bg-white/6 font-mono font-semibold px-1 py-0.5 rounded">
+							projects
+						</Link>
+					</li>
 				</ol>
 
 				<div className="flex gap-4 items-center flex-col sm:flex-row">
