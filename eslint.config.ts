@@ -14,7 +14,15 @@ const compat = new FlatCompat({
 
 const eslintConfig: Linter.Config[] = [
   {
-    ignores: ['.open-next/**', '.next/**', '.wrangler/**', 'node_modules/**', 'next-env.d.ts'],
+    ignores: [
+      '.open-next/**',
+      '.next/**',
+      '.wrangler/**',
+      'node_modules/**',
+      'next-env.d.ts',
+      'prettier.config.mjs',
+      'cloudflare-env.d.ts',
+    ],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
