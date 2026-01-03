@@ -1,0 +1,16 @@
+# Ignore artifacts:
+.next/
+.open-next/
+.vscode/
+.wrangler/
+node_modules/
+cloudflare-env.d.ts
+eslint.config.mjs
+next-env.d.ts
+next.config.ts
+open-next.config.ts
+package-lock.json
+package.json
+postcss.config.mjs
+tsconfig.json
+wrangler.jsonc
