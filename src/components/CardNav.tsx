@@ -153,7 +153,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-200 z-99 top-[1.2em] md:top-[2em] ${className}`}
+      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-300 z-99 top-[1.2em] md:top-[2em] ${className}`}
     >
       <nav
         ref={navRef}
@@ -187,13 +187,13 @@ const CardNav: React.FC<CardNavProps> = ({
             </Link>
           </div>
 
-          <button
+          {/* <button
             type="button"
             className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium cursor-pointer transition-colors duration-300"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
             Get Started
-          </button>
+          </button> */}
         </div>
 
         <div
@@ -202,7 +202,7 @@ const CardNav: React.FC<CardNavProps> = ({
           } md:flex-row md:items-end md:gap-3`}
           aria-hidden={!isExpanded}
         >
-          {(items || []).slice(0, 3).map((item, idx) => (
+          {(items || []).slice(0, 4).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
               className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-15 md:h-full md:min-h-0 md:flex-[1_1_0%]"

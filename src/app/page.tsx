@@ -8,7 +8,7 @@ export default function Home() {
   const items: CardNavItem[] = [
     {
       label: 'Projects',
-      bgColor: '#533599',
+      bgColor: '#D4FAFA',
       textColor: '#000',
       links: [
         {
@@ -20,7 +20,7 @@ export default function Home() {
     },
     {
       label: 'Minecraft Mods',
-      bgColor: '#5700ff',
+      bgColor: '#C3EEFA',
       textColor: '#000',
       links: [
         {
@@ -35,13 +35,37 @@ export default function Home() {
         },
       ],
     },
+    {
+      label: 'Contact',
+      bgColor: '#AFD5F0',
+      textColor: '#000',
+      links: [
+        {
+          label: 'Email',
+          href: 'mailto:omar@r4men.com',
+          ariaLabel: 'email',
+        },
+      ],
+    },
+    {
+      label: 'Support Me',
+      bgColor: '#9DCAEB',
+      textColor: '#000',
+      links: [
+        {
+          label: 'GitHub Sponsors',
+          href: 'https://github.com/sponsors/Ramen5914',
+          ariaLabel: 'GitHub Sponsors',
+        },
+      ],
+    },
   ];
 
   return (
     <>
       <CardNav items={items} buttonTextColor="#000" buttonBgColor="#554181" baseColor="#fff" />
       <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen px-8 pb-20 gap-16 sm:p-20">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start starting:bg-orange-500 transition-colors duration-500">
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <Image
             className="dark:invert"
             src="/next.svg"
