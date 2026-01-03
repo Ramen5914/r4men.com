@@ -94,7 +94,7 @@ export default function RootLayout({
       <body
         className={`${dotoSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CardNav items={items} buttonTextColor="#000" buttonBgColor="#554181" baseColor="#fff" />
+        <CardNav items={items} baseColor="#fff" />
         {children}
       </body>
       <GoogleAnalytics gaId="G-9D5KGL0BKR" />
