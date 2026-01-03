@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
+import Link from 'next/link';
 
 type CardNavLink = {
   label: string;
@@ -181,8 +182,9 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-0">
-            <span className="font-doto text-black font-black text-xl md:text-2xl">r4men.com</span>
-            {/* <Image src={logo} alt={logoAlt} className="logo h-7" /> */}
+            <Link href={'/'} className="font-doto text-black font-black text-xl md:text-2xl">
+              r4men.com
+            </Link>
           </div>
 
           <button
@@ -212,15 +214,15 @@ const CardNav: React.FC<CardNavProps> = ({
               </div>
               <div className="nav-card-links mt-auto flex flex-col gap-0.5">
                 {item.links?.map((lnk, i) => (
-                  <a
+                  <Link
                     key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
                     href={lnk.href}
+                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
                     aria-label={lnk.ariaLabel}
                   >
                     <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
                     {lnk.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
