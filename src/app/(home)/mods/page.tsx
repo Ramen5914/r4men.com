@@ -13,6 +13,13 @@ export default function HomePage() {
         </Link>{" "}
         and see the documentation.
       </p>
+      <p>
+        You can open{" "}
+        <Link href="/mods/game-knight" className="font-medium underline">
+          /mods-game-knight
+        </Link>{" "}
+        and see the documentation for GAME KNIGHT.
+      </p>
     </div>
   );
 }

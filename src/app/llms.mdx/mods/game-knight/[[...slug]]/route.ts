@@ -1,14 +1,18 @@
 import { notFound } from "next/navigation";
-import { getLLMText, getPageMarkdownUrl, source } from "@/lib/source";
+import {
+  gameKnightSource,
+  getGameKnightPageMarkdownUrl,
+  getLLMText,
+} from "@/lib/source";
 
 export const revalidate = false;
 
 export async function GET(
   _req: Request,
-  { params }: RouteContext<"/llms.mdx/docs/[[...slug]]">,
+  { params }: RouteContext<"/llms.mdx/mods/game-knight/[[...slug]]">,
 ) {
   const { slug } = await params;
-  const page = source.getPage(slug?.slice(0, -1));
+  const page = gameKnightSource.getPage(slug?.slice(0, -1));
   if (!page) notFound();
 
   return new Response(await getLLMText(page), {
@@ -19,8 +23,8 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.getPages().map((page) => ({
+  return gameKnightSource.getPages().map((page) => ({
     lang: page.locale,
-    slug: getPageMarkdownUrl(page).segments,
+    slug: getGameKnightPageMarkdownUrl(page).segments,
   }));
 }

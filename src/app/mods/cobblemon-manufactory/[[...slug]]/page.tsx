@@ -11,15 +11,21 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
 import { gitConfig } from "@/lib/shared";
-import { getPageImageUrl, getPageMarkdownUrl, source } from "@/lib/source";
+import {
+  cobblemonManufactorySource,
+  getCobblemonManufactoryPageImageUrl,
+  getCobblemonManufactoryPageMarkdownUrl,
+} from "@/lib/source";
 
-export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
+export default async function Page(
+  props: PageProps<"/mods/cobblemon-manufactory/[[...slug]]">,
+) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = cobblemonManufactorySource.getPage(params.slug);
   if (!page) notFound();
 
   const MDX = page.data.body;
-  const markdownUrl = getPageMarkdownUrl(page).url;
+  const markdownUrl = getCobblemonManufactoryPageMarkdownUrl(page).url;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
@@ -31,14 +37,14 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         <MarkdownCopyButton markdownUrl={markdownUrl} />
         <ViewOptionsPopover
           markdownUrl={markdownUrl}
-          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${page.path}`}
+          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/mods/cobblemon-manufactory/${page.path}`}
         />
       </div>
       <DocsBody>
         <MDX
           components={getMDXComponents({
             // this allows you to link to other pages with relative file paths
-            a: createRelativeLink(source, page),
+            a: createRelativeLink(cobblemonManufactorySource, page),
           })}
         />
       </DocsBody>
@@ -47,21 +53,21 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  return cobblemonManufactorySource.generateParams();
 }
 
 export async function generateMetadata(
-  props: PageProps<"/docs/[[...slug]]">,
+  props: PageProps<"/mods/cobblemon-manufactory/[[...slug]]">,
 ): Promise<Metadata> {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = cobblemonManufactorySource.getPage(params.slug);
   if (!page) notFound();
 
   return {
     title: page.data.title,
     description: page.data.description,
     openGraph: {
-      images: getPageImageUrl(page).url,
+      images: getCobblemonManufactoryPageImageUrl(page).url,
     },
   };
 }
