@@ -8,7 +8,9 @@
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit",
     "lint": "biome check",
-    "format": "biome format --write"
+    "lint:fix": "biome check --write",
+    "format": "biome format",
+    "format:fix": "biome format --write"
   },
   "dependencies": {
     "beautiful-mermaid": "^1.1.3",
