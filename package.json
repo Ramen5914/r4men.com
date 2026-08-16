@@ -31,6 +31,7 @@
     "twoslash": "^0.3.9"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.2.0",
@@ -38,7 +39,6 @@
     "@types/react-dom": "^19.2.4",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3",
-    "@biomejs/biome": "^2.5.8"
+    "typescript": "^6.0.3"
   }
 }
