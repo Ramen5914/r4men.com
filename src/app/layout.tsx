@@ -3,10 +3,18 @@ import { Provider } from "@/components/provider";
 
 import "./global.css";
 import "katex/dist/katex.css";
+import type { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://r4men.com"),
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
