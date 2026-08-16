@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="48x48"
+   inkscape:export-xdpi="144"
+   inkscape:export-ydpi="144"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <title>
+    Steamy ramen bowl
+  </title>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ff0000"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="23.524038"
+     inkscape:cx="15.409769"
+     inkscape:cy="14.687104"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="tiling"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1.3.1"
+       unit="px"
+       seed="1;1"
+       lpesatellites=""
+       num_rows="1"
+       num_cols="3"
+       gapx="3"
+       gapy="0"
+       offset="0"
+       offset_type="false"
+       scale="0"
+       rotate="0"
+       mirrorrowsx="false"
+       mirrorrowsy="false"
+       mirrorcolsx="false"
+       mirrorcolsy="false"
+       mirrortrans="false"
+       shrink_interp="false"
+       split_items="false"
+       link_styles="false"
+       interpolate_scalex="false"
+       interpolate_scaley="true"
+       interpolate_rotatex="false"
+       interpolate_rotatey="true"
+       random_scale="false"
+       random_rotate="false"
+       random_gap_y="false"
+       random_gap_x="false"
+       transformorigin="" />
+  </defs>
+  <g
+     inkscape:label="Full"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:none">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.00157;stroke-dasharray:none"
+       id="rect1"
+       width="32"
+       height="32"
+       x="0"
+       y="0"
+       ry="8"
+       inkscape:label="background" />
+    <g
+       id="g3"
+       transform="translate(0,-1.244471)"
+       inkscape:label="logo"
+       style="display:inline">
+      <path
+         id="path1"
+         style="fill:#000000;fill-opacity:1;stroke-width:1.00157;stroke-dasharray:none"
+         d="m 8,18 a 8,8 0 0 0 8,8 8,8 0 0 0 8,-8 z"
+         inkscape:label="bowl" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.65165;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         d="m 11.382358,7.3147669 c 3.12718,3.6866431 -2.7309824,2.8423471 0.0011,6.8396201 m 4.693324,-6.8396201 c 3.12718,3.6866431 -2.730983,2.8423471 0.0011,6.8396201 m 4.693323,-6.8396201 c 3.12718,3.6866431 -2.730982,2.8423471 0.0011,6.8396201"
+         id="path3"
+         sodipodi:nodetypes="cc"
+         transform="translate(-0.17689945,2)"
+         inkscape:label="steam" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Transparent"
+     transform="translate(1,5)">
+    <path
+       id="rect1-8"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.00157;stroke-dasharray:none"
+       inkscape:label="background"
+       d="M 7 -5 C 2.568 -5 -1 -1.432 -1 3 L -1 19 C -1 23.432 2.568 27 7 27 L 23 27 C 27.432 27 31 23.432 31 19 L 31 3 C 31 -1.432 27.432 -5 23 -5 L 7 -5 z M 10.164062 2.2460938 A 0.82582498 0.82582498 0 0 1 10.833984 2.5371094 C 11.687997 3.5439086 12.06913 4.4143019 11.958984 5.2421875 C 11.848837 6.0700734 11.310929 6.5749239 10.943359 6.9511719 C 10.575788 7.3274189 10.356431 7.5886533 10.300781 7.8476562 C 10.245134 8.1066592 10.273637 8.5463664 10.886719 9.4433594 A 0.82582498 0.82582498 0 0 1 10.671875 10.591797 A 0.82582498 0.82582498 0 0 1 9.5234375 10.376953 C 8.7704788 9.2753091 8.5089109 8.322132 8.6855469 7.5 C 8.8621826 6.677867 9.3971568 6.170043 9.7617188 5.796875 C 10.126281 5.4237067 10.296952 5.1990296 10.320312 5.0234375 C 10.343675 4.8478455 10.283796 4.441991 9.5742188 3.6054688 A 0.82582498 0.82582498 0 0 1 9.6699219 2.4414062 A 0.82582498 0.82582498 0 0 1 10.164062 2.2460938 z M 14.859375 2.2460938 A 0.82582498 0.82582498 0 0 1 15.529297 2.5371094 C 16.383311 3.5439086 16.762488 4.4143019 16.652344 5.2421875 C 16.542197 6.0700734 16.006243 6.5749239 15.638672 6.9511719 C 15.271101 7.3274189 15.049791 7.5886533 14.994141 7.8476562 C 14.938494 8.1066592 14.968948 8.5463664 15.582031 9.4433594 A 0.82582498 0.82582498 0 0 1 15.365234 10.591797 A 0.82582498 0.82582498 0 0 1 14.21875 10.376953 C 13.465787 9.2753091 13.20227 8.322132 13.378906 7.5 C 13.555542 6.677867 14.092469 6.170043 14.457031 5.796875 C 14.821593 5.4237067 14.992265 5.1990296 15.015625 5.0234375 C 15.038987 4.8478455 14.979107 4.441991 14.269531 3.6054688 A 0.82582498 0.82582498 0 0 1 14.365234 2.4414062 A 0.82582498 0.82582498 0 0 1 14.859375 2.2460938 z M 19.552734 2.2460938 A 0.82582498 0.82582498 0 0 1 20.222656 2.5371094 C 21.076669 3.5439086 21.457802 4.4143019 21.347656 5.2421875 C 21.237509 6.0700734 20.699601 6.5749239 20.332031 6.9511719 C 19.96446 7.3274189 19.745103 7.5886533 19.689453 7.8476562 C 19.633807 8.1066592 19.662309 8.5463664 20.275391 9.4433594 A 0.82582498 0.82582498 0 0 1 20.060547 10.591797 A 0.82582498 0.82582498 0 0 1 18.912109 10.376953 C 18.159148 9.2753091 17.897583 8.322132 18.074219 7.5 C 18.250855 6.677867 18.787782 6.170043 19.152344 5.796875 C 19.516906 5.4237067 19.687577 5.1990296 19.710938 5.0234375 C 19.734299 4.8478455 19.672468 4.441991 18.962891 3.6054688 A 0.82582498 0.82582498 0 0 1 19.058594 2.4414062 A 0.82582498 0.82582498 0 0 1 19.552734 2.2460938 z M 7 11.755859 L 23 11.755859 A 8 8 0 0 1 15 19.755859 A 8 8 0 0 1 7 11.755859 z " />
+  </g>
+</svg>

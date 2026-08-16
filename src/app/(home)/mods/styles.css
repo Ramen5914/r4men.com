@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.mod-card {
+  @apply min-h-16;
+}
