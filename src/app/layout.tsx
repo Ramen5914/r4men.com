@@ -1,15 +1,16 @@
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Provider } from "@/components/provider";
 
 import "./global.css";
 import "katex/dist/katex.css";
-import type { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  title: "r4men.com",
   metadataBase: new URL("https://r4men.com"),
   alternates: {
     canonical: "/",
