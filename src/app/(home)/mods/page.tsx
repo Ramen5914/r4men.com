@@ -1,33 +1,25 @@
-import Link from "next/link";
-
-import "./styles.css";
+import ModCard from "@/components/ModCard";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col justify-center text-center flex-1">
-      <div className="grid grid-cols-2">
-        <div className="mod-card">1</div>
-        <div className="mod-card">2</div>
-        <div className="mod-card">3</div>
-        <div className="mod-card">4</div>
+    <div className="flex flex-row text-center justify-center">
+      <div className="flex flex-col justify-center text-center flex-1 max-w-7xl">
+        <h1>My Mod Wikis</h1>
+        <div className="grid grid-cols-2 gap-4">
+          <ModCard
+            name="Game Knight"
+            iconLink="https://raw.githubusercontent.com/Ramen5914/Game-Knight/refs/heads/26.2/src/main/resources/modIcon.png"
+          />
+          <ModCard
+            name="Create: Cobblemon Manufactory"
+            iconLink="https://raw.githubusercontent.com/Ramen5914/Cobblemon-Manufactory/refs/heads/1.21.1/src/main/resources/icon.png"
+          />
+          <ModCard
+            name="Ramen's Additions"
+            iconLink="https://raw.githubusercontent.com/Ramen5914/Game-Knight/refs/heads/26.2/src/main/resources/modIcon.png"
+          />
+        </div>
       </div>
-      <h1 className="text-2xl font-bold mb-4">
-        Hello World (from /mods this time)
-      </h1>
-      <p>
-        You can open{" "}
-        <Link href="/docs" className="font-medium underline">
-          /docs
-        </Link>{" "}
-        and see the documentation.
-      </p>
-      <p>
-        You can open{" "}
-        <Link href="/mods/game-knight" className="font-medium underline">
-          /mods-game-knight
-        </Link>{" "}
-        and see the documentation for GAME KNIGHT.
-      </p>
     </div>
   );
 }
