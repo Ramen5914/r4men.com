@@ -6,6 +6,8 @@ This is a Next.js application generated with
 Run development server:
 
 ```bash
+bun run dev
+# or
 npm run dev
 # or
 pnpm dev
