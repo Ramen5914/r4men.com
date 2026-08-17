@@ -2,7 +2,7 @@ import { HomeLayout } from "fumadocs-ui/layouts/home";
 import { BookIcon } from "lucide-react";
 import { baseOptions } from "@/lib/layout.shared";
 
-// import "./mods.css";
+import "./mods.css";
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
