@@ -6,5 +6,6 @@
   "promos": {
     "26.2-latest": "0.0.1",
     "26.2-recommended": "0.0.1"
-  }
+  },
+  "supportedVersions": "26.2 | 26.1.2"
 }
