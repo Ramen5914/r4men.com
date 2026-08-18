@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps<"/mods/game-knight">) {
         },
       ]}
     >
-      {children}
+      <main className="contents">{children}</main>
     </DocsLayout>
   );
 }
