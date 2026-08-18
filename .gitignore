@@ -31,5 +31,8 @@ next-env.d.ts
 # VSCode
 /.vscode/
 
+# Zed
+/.zed/
+
 # Windows
 *.ini
