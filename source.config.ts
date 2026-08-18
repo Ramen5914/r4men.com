@@ -2,6 +2,7 @@ import {
   rehypeCodeDefaultOptions,
   remarkMdxMermaid,
 } from "fumadocs-core/mdx-plugins";
+import { remarkSteps } from "fumadocs-core/mdx-plugins/remark-steps";
 import { defineConfig } from "fumadocs-mdx/config";
 import { transformerTwoslash } from "fumadocs-twoslash";
 import { createFileSystemTypesCache } from "fumadocs-twoslash/cache-fs";
@@ -23,7 +24,7 @@ export default defineConfig({
       ],
       langs: ["js", "jsx", "ts", "tsx"],
     },
-    remarkPlugins: [remarkMath, remarkMdxMermaid],
+    remarkPlugins: [remarkMath, remarkMdxMermaid, remarkSteps],
     rehypePlugins: (v) => [rehypeKatex, ...v],
   },
 });
