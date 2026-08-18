@@ -13,9 +13,7 @@ export default function ModCard({
   return (
     <Link href={`/mods/${location}`}>
       <div
-        className={
-          "min-h-32 border-gray-850 border-2 rounded-4xl flex-row flex p-4"
-        }
+        className={"min-h-32 border-2 rounded-4xl flex-row flex p-4 space-x-4"}
       >
         <div className="flex flex-col">
           <Image
@@ -27,9 +25,9 @@ export default function ModCard({
             loading="eager"
           />
         </div>
+        <div className="w-0.5 bg-fd-border" />
         <div className="flex flex-col grow">
-          <span>{name}</span>
-          <span>{name}</span>
+          <h3>{name}</h3>
         </div>
       </div>
     </Link>
