@@ -3,11 +3,9 @@ import Link from "next/link";
 
 export default function ModCard({
   name,
-  iconLink,
   location,
 }: {
   name: string;
-  iconLink: string;
   location: string;
 }) {
   const iconSize = 96;
@@ -21,7 +19,7 @@ export default function ModCard({
       >
         <div className="flex flex-col">
           <Image
-            src={iconLink}
+            src={`/mods/${location}/mod-icon.png`}
             alt={"Mod icon"}
             width={iconSize}
             height={iconSize}

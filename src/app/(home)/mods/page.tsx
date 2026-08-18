@@ -6,21 +6,12 @@ export default function HomePage() {
       <div className="flex flex-col justify-center text-center flex-1 max-w-7xl">
         <h1 className="">Modlist:</h1>
         <div className="grid grid-cols-2 gap-4">
-          <ModCard
-            name="Game Knight"
-            iconLink="https://raw.githubusercontent.com/Ramen5914/Game-Knight/refs/heads/26.2/src/main/resources/modIcon.png"
-            location="game-knight"
-          />
+          <ModCard name="Game Knight" location="game-knight" />
           <ModCard
             name="Create: Cobblemon Manufactory"
-            iconLink="https://raw.githubusercontent.com/Ramen5914/Cobblemon-Manufactory/refs/heads/1.21.1/src/main/resources/icon.png"
             location="cobblemon-manufactory"
           />
-          <ModCard
-            name="Ramen's Additions"
-            iconLink="https://raw.githubusercontent.com/Ramen5914/Game-Knight/refs/heads/26.2/src/main/resources/modIcon.png"
-            location="ramens-additions"
-          />
+          <ModCard name="Ramen's Additions" location="ramens-additions" />
         </div>
       </div>
     </div>

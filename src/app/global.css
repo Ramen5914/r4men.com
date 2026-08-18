@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/catppuccin.css";
 @import "fumadocs-ui/css/preset.css";
-@import "fumadocs-twoslash/twoslash.css";
 
 html {
   scrollbar-gutter: stable;
@@ -10,8 +9,4 @@ html {
 html > body[data-scroll-locked] {
   margin-right: 0;
   --removed-body-scroll-bar-size: 0px;
-}
-
-h1 {
-  @apply text-2xl font-bold mb-4;
 }

@@ -13,12 +13,15 @@
     "format:fix": "biome format --write"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
+    "@fuma-translate/react": "^1.0.2",
+    "@fumadocs/base-ui": "^16.14.4",
     "beautiful-mermaid": "^1.1.3",
     "cnfast": "^0.1.0",
     "fumadocs-core": "16.14.3",
     "fumadocs-mdx": "15.2.3",
     "fumadocs-twoslash": "^3.3.0",
-    "fumadocs-ui": "^16.14.4",
+    "fumadocs-ui": "npm:@fumadocs/base-ui@latest",
     "katex": "^0.18.4",
     "lucide-react": "^1.31.0",
     "mermaid": "^11.16.1",
@@ -32,11 +35,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.8",
+    "@fumadocs/cli": "^1.4.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "fumadocs-preview": "^0.2.0",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
