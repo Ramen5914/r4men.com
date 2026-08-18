@@ -6,12 +6,21 @@ export default function HomePage() {
       <div className="flex flex-col justify-center text-center flex-1 gap-4 max-w-7xl">
         <h1 className="">Modlist:</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ModCard name="Game Knight" location="game-knight" />
+          <ModCard
+            name="Game Knight"
+            location="game-knight"
+            gitRepo="Ramen5914/Game-Knight"
+          />
           <ModCard
             name="Create: Cobblemon Manufactory"
             location="cobblemon-manufactory"
+            gitRepo="Ramen5914/Cobblemon-Manufactory"
           />
-          <ModCard name="Ramen's Additions" location="ramens-additions" />
+          <ModCard
+            name="Ramen's Additions"
+            location="ramens-additions"
+            gitRepo="Ramen5914/Ramens-Additions"
+          />
         </div>
       </div>
     </div>
