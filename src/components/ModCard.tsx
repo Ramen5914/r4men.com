@@ -13,9 +13,11 @@ export default function ModCard({
   return (
     <Link href={`/mods/${location}`}>
       <div
-        className={"min-h-32 border-2 rounded-4xl flex-row flex p-4 space-x-4"}
+        className={
+          "lg:min-h-32 border-2 rounded-4xl flex-row flex p-4 space-x-4"
+        }
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col size-16 lg:size-24">
           <Image
             src={`/mods/${location}/mod-icon.png`}
             alt={"Mod icon"}
