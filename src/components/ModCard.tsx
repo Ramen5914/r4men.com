@@ -4,26 +4,28 @@ import Link from "next/link";
 export default function ModCard({
   name,
   iconLink,
+  location,
 }: {
   name: string;
   iconLink: string;
+  location: string;
 }) {
-  const iconSize = 48;
+  const iconSize = 96;
 
   return (
-    <Link href="/mods/game-knight">
+    <Link href={`/mods/${location}`}>
       <div
         className={
-          "min-h-32 border-gray-850 border-2 rounded-[40px] flex-row flex p-4"
+          "min-h-32 border-gray-850 border-2 rounded-4xl flex-row flex p-4"
         }
       >
-        <div>
+        <div className="flex flex-col">
           <Image
             src={iconLink}
             alt={"Mod icon"}
             width={iconSize}
             height={iconSize}
-            className="rounded-full"
+            className="rounded-2xl"
             loading="eager"
           />
         </div>
