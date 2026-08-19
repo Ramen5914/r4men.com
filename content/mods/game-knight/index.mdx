@@ -6,7 +6,8 @@ icon: Rocket
 
 import { ChessKnightIcon, LandmarkIcon } from "lucide-react";
 import { Cards, Card } from "@fumadocs/base-ui/components/card";
-import { ModrinthInstallButton, CurseforgeInstallButton } from "../../../src/components/ModInstallButtons";
+import { ModInstallButtons } from "../../../src/components/ModInstallButtons";
+import { NotificationsDialog } from "../../../src/components/NotificationsDialog";
 
 ## Introduction
 
@@ -30,11 +31,9 @@ Custom screens, networking packets, and chess board representation
 
 ## Installation
 
-Game Knight is available for free on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/game-knight), [Modrith](https://modrinth.com/project/TiZi1TT1), [GitHub](https://github.com/Ramen5914/Game-Knight/releases/latest), and on this website.
+Game Knight is available for free on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/game-knight), [Modrith](https://modrinth.com/project/TiZi1TT1), [GitHub](https://github.com/Ramen5914/Game-Knight/releases/latest), and on this [website](https://r4men.com/mods/game-knight/downloads).
 
 ### One-Click Installs
 
-<div className="flex flex-row gap-4">
-<ModrinthInstallButton  modId={"cobblemon-manufactory"} />
-<CurseforgeInstallButton  addonId={1399042} />
-</div>
+<ModInstallButtons modrinthId={"TiZi1TT1"} curseforgeId={1421212} />
+<NotificationsDialog />

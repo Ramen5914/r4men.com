@@ -2,6 +2,21 @@
 
 import Link from "next/link";
 
+export function ModInstallButtons({
+  modrinthId,
+  curseforgeId,
+}: {
+  modrinthId?: string;
+  curseforgeId?: number;
+}) {
+  return (
+    <div className="flex flex-row gap-4">
+      {modrinthId ? <ModrinthInstallButton modId={modrinthId} /> : null}
+      {curseforgeId ? <CurseforgeInstallButton addonId={curseforgeId} /> : null}
+    </div>
+  );
+}
+
 export function ModrinthInstallButton({ modId }: { modId: string }) {
   return (
     <Link

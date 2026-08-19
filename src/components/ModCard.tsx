@@ -11,8 +11,6 @@ export default async function ModCard({
   location: string;
   gitRepo: string;
 }) {
-  const iconSize = 96;
-
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
