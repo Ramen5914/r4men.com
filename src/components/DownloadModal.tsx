@@ -31,11 +31,19 @@ export default function DownloadModal({
         <Dialog.Popup className="z-101 fixed top-1/2 left-1/2 rounded-2xl -mt-8 flex max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col bg-fd-card border transition-[scale,opacity] duration-100 ease-out">
           <div className={"flex flex-row p-6 justify-between border-b"}>
             <div className={"flex flex-row items-center gap-3"}>
-              <Image className={"rounded-sm"} src={`/mods/${modId}/mod-icon.png`} alt={`${modName} icon`} height={32} width={32}/>
-              <Dialog.Title className={"font-extrabold text-lg"}>{`Download ${modName}`}</Dialog.Title>
+              <Image
+                className={"rounded-sm"}
+                src={`/mods/${modId}/mod-icon.png`}
+                alt={`${modName} icon`}
+                height={32}
+                width={32}
+              />
+              <Dialog.Title
+                className={"font-extrabold text-lg"}
+              >{`Download ${modName}`}</Dialog.Title>
             </div>
             <Dialog.Close className="rounded-full p-2 gap-2 border bg-fd-muted transition-colors hover:bg-fd-accent/80 select-none">
-              <XIcon className={"size-5 stroke-[2.5]"}/>
+              <XIcon className={"size-5 stroke-[2.5]"} />
             </Dialog.Close>
           </div>
           <div className={"min-h-0 overflow-y-auto p-6"}>
@@ -45,9 +53,19 @@ export default function DownloadModal({
                 modrinthId={modrinthId}
               />
               <div className={"flex items-center gap-4"}>
-                <div className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}></div>
-                <span className={"shrink-0 text-sm font-medium text-fd-muted-foreground"}>Download manually</span>
-                <div className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}></div>
+                <div
+                  className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}
+                ></div>
+                <span
+                  className={
+                    "shrink-0 text-sm font-medium text-fd-muted-foreground"
+                  }
+                >
+                  Download manually
+                </span>
+                <div
+                  className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}
+                ></div>
               </div>
             </div>
           </div>
