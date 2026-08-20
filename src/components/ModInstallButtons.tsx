@@ -27,7 +27,7 @@ export function ModrinthInstallButton({ modId }: { modId: string }) {
     >
       <div
         className={
-          "bg-green-500 text-black relative inline-flex min-w-0 shrink-0 items-center justify-center whitespace-nowrap border-0 no-underline touch-manipulation cursor-pointer select-none transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out enabled:active:scale-[0.97] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] focus-visible:outline-none [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow disabled:opacity-50 button-frame--colored h-9 gap-1.5 rounded-xl px-2.5 text-base font-semibold leading-5 [&>svg]:size-5 [&>svg]:min-h-5 min-h-10! w-fit"
+          "bg-[#1bd96a] text-black relative inline-flex min-w-0 shrink-0 items-center justify-center whitespace-nowrap border-0 no-underline touch-manipulation cursor-pointer select-none transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out enabled:active:scale-[0.97] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] focus-visible:outline-none [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow disabled:opacity-50 button-frame--colored h-9 gap-1.5 rounded-xl px-2.5 text-base font-semibold leading-5 [&>svg]:size-5 [&>svg]:min-h-5 min-h-10! w-fit"
         }
       >
         <svg
@@ -48,7 +48,7 @@ export function ModrinthInstallButton({ modId }: { modId: string }) {
             fill="currentColor"
           />
         </svg>
-        <span>Install with Modrinth app</span>
+        <span>Install with Modrinth App</span>
       </div>
     </Link>
   );
@@ -82,7 +82,7 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
           />
         </svg>
 
-        <span>Install with Curseforge app</span>
+        <span>Install with Curseforge App</span>
       </div>
     </Link>
   );
