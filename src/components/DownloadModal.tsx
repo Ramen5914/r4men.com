@@ -1,16 +1,18 @@
 import { Dialog } from "@base-ui/react/dialog";
-import {DownloadIcon} from "lucide-react";
+import { DownloadIcon } from "lucide-react";
 
 export default function DownloadModal() {
   return (
     <Dialog.Root>
       <Dialog.Trigger className="flex items-center justify-center gap-2 border rounded-xl transition-colors bg-fd-card hover:bg-fd-accent/80 text-fd-card-foreground p-4 text-sm leading-none whitespace-nowrap font-normal select-none">
-        <div className={"w-fit shadow-md rounded-lg border bg-fd-muted p-1.5 text-fd-muted-foreground"}>
-          <DownloadIcon className={"text-fd-primary size-4"}/>
+        <div
+          className={
+            "w-fit shadow-md rounded-lg border bg-fd-muted p-1.5 text-fd-muted-foreground"
+          }
+        >
+          <DownloadIcon className={"text-fd-primary size-4"} />
         </div>
-        <span className={"text-sm font-medium"}>
-          Download
-        </span>
+        <span className={"text-sm font-medium"}>Download</span>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Backdrop
@@ -27,9 +29,7 @@ export default function DownloadModal() {
         />
         <Dialog.Popup className="z-101 fixed top-1/2 left-1/2 -mt-8 flex w-96 max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col gap-4 bg-white dark:bg-neutral-950 p-4 text-neutral-950 dark:text-white border border-neutral-950 dark:border-white shadow-[0.25rem_0.25rem_0] shadow-black/12 dark:shadow-none transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0">
           <div className="flex flex-col gap-1">
-            <Dialog.Title className="text-base font-bold">
-              Test
-            </Dialog.Title>
+            <Dialog.Title className="text-base font-bold">Test</Dialog.Title>
             <Dialog.Description className="text-sm text-neutral-600 dark:text-neutral-400">
               Paragraph
             </Dialog.Description>

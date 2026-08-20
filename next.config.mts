@@ -6,7 +6,7 @@ const withMDX = createMDX();
 const allowedDevOrigins: string[] = [];
 
 if (process.env.LOCAL_IP) {
-  allowedDevOrigins.push(process.env.LOCAL_IP)
+  allowedDevOrigins.push(process.env.LOCAL_IP);
 }
 
 const config: NextConfig = {
