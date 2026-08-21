@@ -35,7 +35,7 @@ export default async function ModCard({
     <Link href={`/mods/${location}`}>
       <div
         className={
-          "lg:min-h-32 border-2 rounded-4xl flex-row flex p-4 space-x-4"
+          "flex flex-row space-x-4 rounded-4xl border-2 p-4 lg:min-h-32"
         }
       >
         <Image
@@ -43,13 +43,13 @@ export default async function ModCard({
           alt={"Mod icon"}
           width={256}
           height={256}
-          className="rounded-2xl size-16 md:size-24"
+          className="size-16 rounded-2xl md:size-24"
           loading="eager"
         />
         <div className="min-w-0.5 max-w-0.5 shrink bg-fd-border" />
         <div className="flex flex-col">
-          <span className={"text-sm md:text-2xl text-fd-primary"}>{name}</span>
-          <span className={"text-[10px]/3.5 md:text-base text-left"}>
+          <span className={"text-fd-primary text-sm md:text-2xl"}>{name}</span>
+          <span className={"text-left text-[10px]/3.5 md:text-base"}>
             {repo.description}
           </span>
         </div>

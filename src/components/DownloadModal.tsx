@@ -16,20 +16,20 @@ export default function DownloadModal({
 }) {
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="flex items-center justify-center gap-2 border rounded-xl transition-colors bg-fd-card hover:bg-fd-accent/80 text-fd-card-foreground p-4 text-sm leading-none whitespace-nowrap font-normal select-none">
+      <Dialog.Trigger className="flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-xl border bg-fd-card p-4 font-normal text-fd-card-foreground text-sm leading-none transition-colors hover:bg-fd-accent/80">
         <div
           className={
-            "w-fit shadow-md rounded-lg border bg-fd-muted p-1.5 text-fd-muted-foreground"
+            "w-fit rounded-lg border bg-fd-muted p-1.5 text-fd-muted-foreground shadow-md"
           }
         >
-          <DownloadIcon className={"text-fd-primary size-4"} />
+          <DownloadIcon className={"size-4 text-fd-primary"} />
         </div>
-        <span className={"text-sm font-medium"}>Download</span>
+        <span className={"font-medium text-sm"}>Download</span>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Backdrop className="z-100 fixed inset-0 min-h-dvh bg-black/20 dark:bg-black/40 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-150 supports-[-webkit-touch-callout:none]:absolute" />
-        <Dialog.Popup className="z-101 fixed top-1/2 left-1/2 rounded-2xl -mt-8 flex max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col bg-fd-card border transition-[scale,opacity] duration-100 ease-out">
-          <div className={"flex flex-row p-6 justify-between border-b"}>
+        <Dialog.Backdrop className="fixed inset-0 z-100 min-h-dvh bg-black/20 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-150 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/40" />
+        <Dialog.Popup className="fixed top-1/2 left-1/2 z-101 -mt-8 flex max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border bg-fd-card transition-[scale,opacity] duration-100 ease-out">
+          <div className={"flex flex-row justify-between gap-4 border-b p-6"}>
             <div className={"flex flex-row items-center gap-3"}>
               <Image
                 className={"rounded-sm"}
@@ -42,7 +42,7 @@ export default function DownloadModal({
                 className={"font-extrabold text-lg"}
               >{`Download ${modName}`}</Dialog.Title>
             </div>
-            <Dialog.Close className="rounded-full p-2 gap-2 border bg-fd-muted transition-colors hover:bg-fd-accent/80 select-none">
+            <Dialog.Close className="select-none gap-2 rounded-full border bg-fd-muted p-2 transition-colors hover:bg-fd-accent/80">
               <XIcon className={"size-5 stroke-[2.5]"} />
             </Dialog.Close>
           </div>
@@ -54,27 +54,19 @@ export default function DownloadModal({
               />
               <div className={"flex items-center gap-4"}>
                 <div
-                  className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}
+                  className={"flex h-0.5 w-full grow rounded-2xl bg-fd-border"}
                 ></div>
                 <span
                   className={
-                    "shrink-0 text-sm font-medium text-fd-muted-foreground"
+                    "shrink-0 font-medium text-fd-muted-foreground text-sm"
                   }
                 >
-                  Download manually
+                  <Dialog.Description>Download manually</Dialog.Description>
                 </span>
                 <div
-                  className={"flex grow h-0.5 rounded-2xl bg-fd-border w-full"}
+                  className={"flex h-0.5 w-full grow rounded-2xl bg-fd-border"}
                 ></div>
               </div>
-            </div>
-          </div>
-          <div className={"relative"}>
-            <div className="flex flex-col gap-1">
-              <Dialog.Title className="text-base font-bold">Test</Dialog.Title>
-              <Dialog.Description className="text-sm">
-                Paragraph
-              </Dialog.Description>
             </div>
           </div>
         </Dialog.Popup>

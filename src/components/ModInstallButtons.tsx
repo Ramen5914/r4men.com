@@ -10,7 +10,7 @@ export function ModInstallButtons({
   curseforgeId?: number;
 }) {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="m-auto flex flex-row items-center gap-4">
       {modrinthId ? <ModrinthInstallButton modId={modrinthId} /> : null}
       {curseforgeId ? <CurseforgeInstallButton addonId={curseforgeId} /> : null}
     </div>
@@ -27,7 +27,7 @@ export function ModrinthInstallButton({ modId }: { modId: string }) {
     >
       <div
         className={
-          "bg-[#1bd96a] text-black relative inline-flex min-w-0 shrink-0 items-center justify-center whitespace-nowrap border-0 no-underline touch-manipulation cursor-pointer select-none transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out enabled:active:scale-[0.97] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] focus-visible:outline-none [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow disabled:opacity-50 button-frame--colored h-9 gap-1.5 rounded-xl px-2.5 text-base font-semibold leading-5 [&>svg]:size-5 [&>svg]:min-h-5 min-h-10! w-fit"
+          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#1bd96a] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
         }
       >
         <svg
@@ -64,7 +64,7 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
     >
       <div
         className={
-          "bg-[#eb622b] text-black relative inline-flex min-w-0 shrink-0 items-center justify-center whitespace-nowrap border-0 no-underline touch-manipulation cursor-pointer select-none transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out enabled:active:scale-[0.97] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] [&:not(:disabled):not([aria-disabled=true]):focus-visible]:brightness-[--hover-brightness] focus-visible:outline-none [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow disabled:opacity-50 [&[aria-disabled=true]]:opacity-50 button-frame--colored h-9 gap-1.5 rounded-xl px-2.5 text-base font-semibold leading-5 [&>svg]:size-5 [&>svg]:min-h-5 !min-h-10 w-fit"
+          "button-frame--colored !min-h-10 relative inline-flex h-9 w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out focus-visible:outline-none enabled:active:scale-[0.97] disabled:opacity-50 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow [&:not(:disabled):not([aria-disabled=true]):focus-visible]:brightness-[--hover-brightness] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] [&>svg]:size-5 [&>svg]:min-h-5 [&[aria-disabled=true]]:opacity-50"
         }
       >
         <svg
