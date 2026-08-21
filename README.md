@@ -1,5 +1,7 @@
 # r4men.com
 
+[![wakatime](https://wakatime.com/badge/github/Ramen5914/r4men.com.svg)](https://wakatime.com/badge/github/Ramen5914/r4men.com)
+
 This is a Next.js application generated with
 [Create Fumadocs](https://github.com/fuma-nama/fumadocs).
 
