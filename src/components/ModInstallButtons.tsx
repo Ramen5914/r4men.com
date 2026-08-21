@@ -10,7 +10,7 @@ export function ModInstallButtons({
   curseforgeId?: number;
 }) {
   return (
-    <div className="m-auto flex flex-row items-center gap-4">
+    <div className="m-auto flex flex-col items-center justify-center gap-4 lg:flex-row">
       {modrinthId ? <ModrinthInstallButton modId={modrinthId} /> : null}
       {curseforgeId ? <CurseforgeInstallButton addonId={curseforgeId} /> : null}
     </div>
@@ -63,7 +63,7 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
     >
       <div
         className={
-          "button-frame--colored relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
+          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
         }
       >
         <svg
