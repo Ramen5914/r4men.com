@@ -8,7 +8,7 @@
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit",
     "lint": "biome check",
-    "lint:fix": "biome check --write",
+    "lint:fix": "biome check --write --unsafe",
     "format": "biome format",
     "format:fix": "biome format --write"
   },
