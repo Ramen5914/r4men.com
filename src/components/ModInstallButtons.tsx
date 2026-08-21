@@ -31,8 +31,7 @@ export function ModrinthInstallButton({ modId }: { modId: string }) {
         }
       >
         <svg
-          width="512"
-          height="514"
+          height="20"
           viewBox="0 0 512 514"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -64,14 +63,13 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
     >
       <div
         className={
-          "button-frame--colored !min-h-10 relative inline-flex h-9 w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out focus-visible:outline-none enabled:active:scale-[0.97] disabled:opacity-50 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-4 [&:not(:disabled):not([aria-disabled=true]):focus-visible]:ring-brand-shadow [&:not(:disabled):not([aria-disabled=true]):focus-visible]:brightness-[--hover-brightness] [&:not(:disabled):not([aria-disabled=true]):hover]:brightness-[--hover-brightness] [&>svg]:size-5 [&>svg]:min-h-5 [&[aria-disabled=true]]:opacity-50"
+          "button-frame--colored relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
         }
       >
         <svg
           version="1.1"
           id="svg81"
-          width="30.780212"
-          height="20"
+          height="17"
           viewBox="0 0 31 20"
           xmlns="http://www.w3.org/2000/svg"
         >
