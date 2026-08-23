@@ -51,7 +51,7 @@ export default async function DownloadModal({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-20 min-h-dvh bg-black/20 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-150 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/40" />
-        <Dialog.Popup className="fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border bg-fd-card transition-[scale,opacity] duration-100 ease-out">
+        <Dialog.Popup className="fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border bg-fd-card transition-[scale,opacity] duration-100 ease-out md:w-auto">
           <div className={"flex flex-row justify-between gap-4 border-b p-6"}>
             <div className={"flex flex-row items-center gap-3"}>
               <Image
