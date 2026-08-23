@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import ModCard from "@/components/ModCard";
+
+export const metadata: Metadata = {
+  title: "All mods",
+};
 
 export default function HomePage() {
   return (
