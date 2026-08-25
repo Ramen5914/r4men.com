@@ -5,15 +5,22 @@ const withMDX = createMDX();
 
 const allowedDevOrigins: string[] = [];
 
-if (process.env.LOCAL_IP) {
-  allowedDevOrigins.push(process.env.LOCAL_IP);
+if (process.env.HOSTNAME) {
+  allowedDevOrigins.push(process.env.HOSTNAME);
 }
 
 const config: NextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ["typescript", "twoslash"],
   images: {
-    remotePatterns: [new URL("https://raw.githubusercontent.com/Ramen5914/**")],
+    remotePatterns: [
+      new URL("https://raw.githubusercontent.com/Ramen5914/**"),
+      {
+        protocol: "https",
+        hostname: "cdn.r4men.com",
+        pathname: "/**",
+      },
+    ],
   },
   allowedDevOrigins: allowedDevOrigins,
   logging: {
