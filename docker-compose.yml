@@ -4,7 +4,7 @@ services:
     container_name: r4men.com-cdn
     restart: unless-stopped
     ports:
-      - "4376:80"
+      - "${CDN_PORT}:80"
     volumes:
       - ${CDN_PATH}:/srv:ro
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
