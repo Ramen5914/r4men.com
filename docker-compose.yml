@@ -1,0 +1,10 @@
+services:
+  cdn:
+    image: caddy:2-alpine
+    container_name: r4men.com-cdn
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ~/Documents/r4men.com-cdn:/srv:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
