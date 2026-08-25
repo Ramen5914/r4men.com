@@ -5,7 +5,10 @@ import { baseOptions } from "@/lib/layout.shared";
 import { gameKnightSource } from "@/lib/source";
 
 export const metadata: Metadata = {
-  title: "%s | Game Knight",
+  title: {
+    default: "Game Knight",
+    template: "%s | Game Knight",
+  },
 };
 
 export default function Layout({ children }: LayoutProps<"/mods/game-knight">) {
