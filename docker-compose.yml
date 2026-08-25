@@ -6,5 +6,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ~/Documents/r4men.com-cdn:/srv:ro
+      - ${CDN_PATH}:/srv:ro
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
