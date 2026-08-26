@@ -56,7 +56,7 @@ export default async function DownloadModal({
             <div className={"flex flex-row items-center gap-3"}>
               <Image
                 className={"rounded-sm"}
-                src={`/mods/${modId}/mod-icon.png`}
+                src={`https://cdn.r4men.com/mods/${modId}/mod-icon.png`}
                 alt={`${modName} icon`}
                 height={32}
                 width={32}

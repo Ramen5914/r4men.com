@@ -39,7 +39,7 @@ export default async function ModCard({
         }
       >
         <Image
-          src={`/mods/${location}/mod-icon.png`}
+          src={`https://cdn.r4men.com/mods/${location}/mod-icon.png`}
           alt={"Mod icon"}
           width={256}
           height={256}
