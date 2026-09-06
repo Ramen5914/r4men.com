@@ -7,7 +7,10 @@ import {
   cobblemonManufactoryDocsRoute,
   gameKnightDocsContentRoute,
   gameKnightDocsImageRoute,
-  gameKnightDocsRoute, girlsServerDocsContentRoute, girlsServerDocsImageRoute, girlsServerDocsRoute,
+  gameKnightDocsRoute,
+  girlsServerDocsContentRoute,
+  girlsServerDocsImageRoute,
+  girlsServerDocsRoute,
 } from "@/lib/shared";
 
 // region Girls' Server
@@ -38,9 +41,9 @@ export function getGirlsServerPageImageUrl(
 
   return {
     segments,
-    url: "/" + [page.locale, ...girlsServerDocsImageRoute.split("/"), ...segments]
+    url: `/${[page.locale, ...girlsServerDocsImageRoute.split("/"), ...segments]
       .filter(Boolean)
-      .join("/"),
+      .join("/")}`,
   };
 }
 
@@ -54,8 +57,8 @@ export function getGirlsServerPageMarkdownUrl(
     url:
       "/" +
       [page.locale, ...girlsServerDocsContentRoute.split("/"), ...segments]
-      .filter(Boolean)
-      .join("/"),
+        .filter(Boolean)
+        .join("/"),
   };
 }
 // endregion

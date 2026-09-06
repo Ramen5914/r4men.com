@@ -11,7 +11,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
 import { gitConfig } from "@/lib/shared";
-import {getGirlsServerPageImageUrl, getGirlsServerPageMarkdownUrl, girlsServerSource} from "@/lib/source";
+import {
+  getGirlsServerPageImageUrl,
+  getGirlsServerPageMarkdownUrl,
+  girlsServerSource,
+} from "@/lib/source";
 
 export default async function Page(
   props: PageProps<"/girls-server/[[...slug]]">,

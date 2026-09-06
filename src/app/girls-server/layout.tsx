@@ -1,7 +1,7 @@
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import type { Metadata } from "next";
 import { baseOptions } from "@/lib/layout.shared";
-import {girlsServerSource} from "@/lib/source";
+import { girlsServerSource } from "@/lib/source";
 
 export const metadata: Metadata = {
   title: {
@@ -10,14 +10,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({
-                                 children,
-                               }: LayoutProps<"/girls-server">) {
+export default function Layout({ children }: LayoutProps<"/girls-server">) {
   return (
-    <DocsLayout
-      tree={girlsServerSource.getPageTree()}
-      {...baseOptions()}
-    >
+    <DocsLayout tree={girlsServerSource.getPageTree()} {...baseOptions()}>
       {children}
     </DocsLayout>
   );
