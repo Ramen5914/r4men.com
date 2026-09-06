@@ -7,10 +7,60 @@ import {
   cobblemonManufactoryDocsRoute,
   gameKnightDocsContentRoute,
   gameKnightDocsImageRoute,
-  gameKnightDocsRoute,
+  gameKnightDocsRoute, girlsServerDocsContentRoute, girlsServerDocsImageRoute, girlsServerDocsRoute,
 } from "@/lib/shared";
 
-// Game Knight
+// region Girls' Server
+const girlsServerDocs = defineDocs({
+  dir: "content/girls-server",
+  docs: {
+    schema: pageSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
+  },
+  meta: {
+    schema: metaSchema,
+  },
+});
+
+// See https://fumadocs.dev/docs/headless/source-api for more info
+export const girlsServerSource = loader({
+  baseUrl: girlsServerDocsRoute,
+  source: girlsServerDocs.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+});
+
+export function getGirlsServerPageImageUrl(
+  page: (typeof girlsServerSource)["$inferPage"],
+) {
+  const segments = [...page.slugs, "image.png"];
+
+  return {
+    segments,
+    url: "/" + [page.locale, ...girlsServerDocsImageRoute.split("/"), ...segments]
+      .filter(Boolean)
+      .join("/"),
+  };
+}
+
+export function getGirlsServerPageMarkdownUrl(
+  page: (typeof girlsServerSource)["$inferPage"],
+) {
+  const segments = [...page.slugs, "content.md"];
+
+  return {
+    segments,
+    url:
+      "/" +
+      [page.locale, ...girlsServerDocsContentRoute.split("/"), ...segments]
+      .filter(Boolean)
+      .join("/"),
+  };
+}
+// endregion
+
+// region Game Knight
 const gameKnightDocs = defineDocs({
   dir: "content/mods/game-knight",
   docs: {
@@ -60,8 +110,9 @@ export function getGameKnightPageMarkdownUrl(
         .join("/"),
   };
 }
+// endregion
 
-// Create: Cobblemon Manufactory
+// region Create: Cobblemon Manufactory
 const cobblemonManufactoryDocs = defineDocs({
   dir: "content/mods/cobblemon-manufactory",
   docs: {
@@ -114,6 +165,7 @@ export function getCobblemonManufactoryPageMarkdownUrl(
         .join("/"),
   };
 }
+// endregion
 
 // Combined source used only for global search.
 const allModsDocs = defineDocs({
