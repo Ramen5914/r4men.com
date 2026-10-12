@@ -1,11 +1,12 @@
 {
   "homepage": "https://r4men.com/mods/game-knight",
   "26.2": {
+    "0.0.2-alpha": "Fixed some pawn captures/movements/attacks",
     "0.0.1-alpha": "First alpha build"
   },
   "promos": {
-    "26.2-latest": "0.0.1-alpha",
-    "26.2-recommended": "0.0.1-alpha"
+    "26.2-latest": "0.0.2-alpha",
+    "26.2-recommended": "0.0.2-alpha"
   },
   "supportedVersions": "26.2 | 26.1.2"
 }
