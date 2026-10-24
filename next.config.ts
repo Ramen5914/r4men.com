@@ -17,7 +17,7 @@ const config: NextConfig = {
       new URL("https://raw.githubusercontent.com/Ramen5914/**"),
       {
         protocol: "https",
-        hostname: "cdn.r4men.com",
+        hostname: "cdn.ramen.games",
         pathname: "/**",
       },
     ],

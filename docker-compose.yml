@@ -1,8 +1,8 @@
-name: r4men.com
+name: ramen.games
 services:
   cdn:
     image: caddy:2-alpine
-    container_name: r4men.com-cdn
+    container_name: ramen.games-cdn
     restart: unless-stopped
     ports:
       - "${CDN_PORT}:80"

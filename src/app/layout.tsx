@@ -17,8 +17,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "r4men.com",
-  metadataBase: new URL("https://r4men.com"),
+  title: "ramen.games",
+  metadataBase: new URL("https://ramen.games"),
   alternates: {
     canonical: "/",
   },

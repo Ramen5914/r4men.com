@@ -57,7 +57,7 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
   return (
     <Link
       onClick={() => {
-        window.location.href = `curseforge://install?addonId=${addonId}&source=r4men.com`;
+        window.location.href = `curseforge://install?addonId=${addonId}&source=ramen.games`;
       }}
       href={""}
     >

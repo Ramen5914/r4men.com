@@ -1,4 +1,4 @@
-export const appName = "r4men.com";
+export const appName = "ramen.games";
 
 // region Girls' Server
 export const girlsServerDocsRoute = "/girls-server";
@@ -22,6 +22,6 @@ export const cobblemonManufactoryDocsContentRoute =
 // fill this with your actual GitHub info, for example:
 export const gitConfig = {
   user: "Ramen5914",
-  repo: "r4men.com",
+  repo: "ramen.games",
   branch: "main",
 };

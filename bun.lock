@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "r4men.com",
+      "name": "ramen.games",
       "dependencies": {
         "@base-ui/react": "^1.7.0",
         "@fuma-translate/react": "^1.0.2",
