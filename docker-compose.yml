@@ -9,3 +9,19 @@ services:
     volumes:
       - ${CDN_PATH}:/srv:ro
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+  reposilite:
+    image: dzikoysk/reposilite:3.6.4
+    ports:
+      - ${REPOSILITE_PORT}:${REPOSILITE_PORT}
+    env_file:
+      - .env.local
+    environment:
+      - JAVA_OPTS=-Xmx${REPOSILITE_MEMORY} ${JAVA_COMPOSE_OPTS}
+      - REPOSILITE_OPTS=--port ${REPOSILITE_PORT} ${REPOSILITE_COMPOSE_OPTS}
+    volumes:
+      - reposilite-data:/app/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+volumes:
+  reposilite-data: {}
