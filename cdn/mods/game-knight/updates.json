@@ -1,13 +1,24 @@
 {
   "homepage": "https://r4men.com/mods/game-knight",
+  "26.3": {
+  	"0.0.4-alpha": "Fixed version parity between 26.3, 26.2, and 26.1.2"
+  },
   "26.2": {
     "0.0.1-alpha": "First alpha build",
     "0.0.2-alpha": "Fixed some pawn captures/movements/attacks",
-    "0.0.3-alpha": "Fixed pawn en passant capturing and moving"
+    "0.0.3-alpha": "Fixed pawn en passant capturing and moving",
+    "0.0.4-alpha": "Fixed version parity between 26.3, 26.2, and 26.1.2"
+  },
+  "26.1.2": {
+  	"0.0.4-alpha": "Fixed version parity between 26.3, 26.2, 26.1.2"
   },
   "promos": {
-    "26.2-latest": "0.0.3-alpha",
-    "26.2-recommended": "0.0.3-alpha"
+    "26.3-latest": "0.0.4-alpha",
+    "26.3-recommended": "0.0.4-alpha",
+    "26.2-latest": "0.0.4-alpha",
+    "26.2-recommended": "0.0.4-alpha",
+    "26.1.2-latest": "0.0.4-alpha",
+    "26.1.2-recommended": "0.0.4-alpha"
   },
-  "supportedVersions": "26.2 | 26.1.2"
+  "supportedVersions": "26.3 | 26.2 | 26.1.2"
 }
