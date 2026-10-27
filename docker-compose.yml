@@ -10,7 +10,7 @@ services:
       - ${CDN_PATH}:/srv:ro
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
   reposilite:
-    image: dzikoysk/reposilite:3.6.4
+    image: dzikoysk/reposilite:3.6.5
     ports:
       - ${REPOSILITE_PORT}:${REPOSILITE_PORT}
     env_file:
