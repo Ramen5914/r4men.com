@@ -20,6 +20,7 @@ services:
       - REPOSILITE_OPTS=--port ${REPOSILITE_PORT} ${REPOSILITE_COMPOSE_OPTS}
     volumes:
       - reposilite-data:/app/data
+      - ./reposilite-plugins:/app/data/plugins:ro
     restart: unless-stopped
     stdin_open: true
     tty: true
