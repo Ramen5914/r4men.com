@@ -11,6 +11,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import { userAgentFromString } from "next/server";
 import type React from "react";
+import { getContents, getLatestVersion } from "@/api/maven";
 import { ModInstallButtons } from "@/components/ModInstallButtons";
 
 export default async function DownloadModal({
@@ -20,6 +21,7 @@ export default async function DownloadModal({
   modrinthId,
   mcVersions,
   modLoaders,
+  mavenPath,
 }: {
   modId: string;
   modName: string;
@@ -27,6 +29,7 @@ export default async function DownloadModal({
   modrinthId?: string;
   mcVersions: { label: string; value: string }[];
   modLoaders: { label: string; value: string }[];
+  mavenPath: string;
 }) {
   const headerList = await headers();
   const ua = headerList.get("user-agent") ?? "";
@@ -37,21 +40,40 @@ export default async function DownloadModal({
   const isMobile = device.type === "mobile";
   const isTablet = device.type === "tablet";
 
+  const latestModVersion = await getLatestVersion(mavenPath);
+  const details = await getContents(`${mavenPath}/${latestModVersion.version}`);
+  console.log(details);
+
+  if (details.type === "DIRECTORY") {
+    mcVersions = [];
+    for (const file of details.files.reverse()) {
+      if (file.name.endsWith(".jar")) {
+        const mcVersion = file.name.split(".jar")[0].split("-")[4];
+        mcVersions.push({
+          label: mcVersion,
+          value: mcVersion,
+        });
+      }
+    }
+  } else {
+    throw Error("Should be searching in a directory");
+  }
+
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-xl border bg-fd-card p-4 font-normal text-fd-card-foreground text-sm leading-none transition-colors hover:bg-fd-accent/80">
+      <Dialog.Trigger className="bg-fd-card text-fd-card-foreground hover:bg-fd-accent/80 flex items-center justify-center gap-2 rounded-xl border p-4 text-sm leading-none font-normal whitespace-nowrap transition-colors select-none">
         <div
           className={
-            "w-fit rounded-lg border bg-fd-muted p-1.5 text-fd-muted-foreground shadow-md"
+            "bg-fd-muted text-fd-muted-foreground w-fit rounded-lg border p-1.5 shadow-md"
           }
         >
-          <DownloadIcon className={"size-4 text-fd-primary"} />
+          <DownloadIcon className={"text-fd-primary size-4"} />
         </div>
-        <span className={"font-medium text-sm"}>Download</span>
+        <span className={"text-sm font-medium"}>Download</span>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-20 min-h-dvh bg-black/20 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-150 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/40" />
-        <Dialog.Popup className="fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border bg-fd-card transition-[scale,opacity] duration-100 ease-out md:w-auto">
+        <Dialog.Popup className="bg-fd-card fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border transition-[scale,opacity] duration-100 ease-out md:w-auto">
           <div className={"flex flex-row justify-between gap-4 border-b p-6"}>
             <div className={"flex flex-row items-center gap-3"}>
               <Image
@@ -66,7 +88,7 @@ export default async function DownloadModal({
               >{`Download ${modName}`}</Dialog.Title>
             </div>
             <div>
-              <Dialog.Close className="select-none gap-2 rounded-full border bg-fd-muted p-2 transition-colors hover:bg-fd-accent/80">
+              <Dialog.Close className="bg-fd-muted hover:bg-fd-accent/80 gap-2 rounded-full border p-2 transition-colors select-none">
                 <XIcon className={"size-5 stroke-[2.5]"} />
               </Dialog.Close>
             </div>
@@ -82,19 +104,19 @@ export default async function DownloadModal({
                   <div className={"flex items-center gap-4"}>
                     <div
                       className={
-                        "flex h-0.5 w-full grow rounded-2xl bg-fd-border"
+                        "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
                       }
                     ></div>
                     <span
                       className={
-                        "shrink-0 font-medium text-fd-muted-foreground text-sm"
+                        "text-fd-muted-foreground shrink-0 text-sm font-medium"
                       }
                     >
                       <Dialog.Description>Download manually</Dialog.Description>
                     </span>
                     <div
                       className={
-                        "flex h-0.5 w-full grow rounded-2xl bg-fd-border"
+                        "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
                       }
                     ></div>
                   </div>
@@ -122,10 +144,10 @@ function SelectBox({
   return (
     <div className={"relative inline-block w-full"}>
       <Select.Root items={list} defaultValue={list[0].value ?? ""}>
-        <Select.Label className="cursor-default font-bold text-sm">
+        <Select.Label className="cursor-default text-sm font-bold">
           {title}
         </Select.Label>
-        <Select.Trigger className="flex h-8 w-full min-w-40 select-none items-center justify-between gap-3 whitespace-nowrap border pr-1 pl-2 font-normal text-sm leading-none">
+        <Select.Trigger className="flex h-8 w-full min-w-40 items-center justify-between gap-3 border pr-1 pl-2 text-sm leading-none font-normal whitespace-nowrap select-none">
           <Select.Value />
           <Select.Icon>
             <ChevronDownIcon />
@@ -133,11 +155,11 @@ function SelectBox({
         </Select.Trigger>
         <Select.Portal>
           <Select.Positioner
-            className="z-50 select-none outline-hidden"
+            className="z-50 outline-hidden select-none"
             sideOffset={4}
             alignItemWithTrigger={false}
           >
-            <Select.Popup className="group min-w-(--anchor-width) origin-(--transform-origin) border bg-clip-padding shadow-[0.25rem_0.25rem_0] shadow-black/12 outline-hidden transition-[scale,opacity] duration-100 ease-out data-[side=none]:data-starting-style:scale-100 data-[side=none]:data-starting-style:opacity-100 data-[side=none]:data-ending-style:transition-none data-[side=none]:data-starting-style:transition-none data-[side=none]:min-w-[calc(var(--anchor-width)+1.75rem)] data-[side=none]:translate-y-px data-ending-style:scale-[0.98] data-starting-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:opacity-0 dark:border-white dark:bg-neutral-950 dark:text-white dark:shadow-none">
+            <Select.Popup className="group min-w-(--anchor-width) origin-(--transform-origin) border bg-clip-padding shadow-[0.25rem_0.25rem_0] shadow-black/12 outline-hidden transition-[scale,opacity] duration-100 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0 data-[side=none]:min-w-[calc(var(--anchor-width)+1.75rem)] data-[side=none]:translate-y-px data-[side=none]:data-ending-style:transition-none data-[side=none]:data-starting-style:scale-100 data-[side=none]:data-starting-style:opacity-100 data-[side=none]:data-starting-style:transition-none dark:border-white dark:bg-neutral-950 dark:text-white dark:shadow-none">
               <Select.ScrollUpArrow className="top-0 z-51 flex h-4 w-full cursor-default items-center justify-center text-center text-xs before:absolute before:left-0 before:h-full before:w-full before:content-[''] dark:bg-neutral-950">
                 <ChevronUpIcon />
               </Select.ScrollUpArrow>
@@ -146,7 +168,7 @@ function SelectBox({
                   <Select.Item
                     key={label}
                     value={value}
-                    className="grid cursor-default select-none grid-cols-[1rem_1fr] items-center gap-2 py-1.5 pr-4 pl-2.5 text-sm outline-hidden data-highlighted:bg-neutral-950 data-highlighted:text-white dark:data-highlighted:bg-white dark:data-highlighted:text-neutral-950"
+                    className="grid cursor-default grid-cols-[1rem_1fr] items-center gap-2 py-1.5 pr-4 pl-2.5 text-sm outline-hidden select-none data-highlighted:bg-neutral-950 data-highlighted:text-white dark:data-highlighted:bg-white dark:data-highlighted:text-neutral-950"
                   >
                     <Select.ItemIndicator className="col-start-1">
                       <CheckIcon />
@@ -157,7 +179,7 @@ function SelectBox({
                   </Select.Item>
                 ))}
               </Select.List>
-              <Select.ScrollDownArrow className="bottom-0 z-51 flex h-4 w-full cursor-default items-center justify-center bg-white text-center text-xs before:absolute before:left-0 before:h-full before:w-full before:content-[''] data-[side=none]:before:bottom-[-100%] dark:bg-neutral-950">
+              <Select.ScrollDownArrow className="bottom-0 z-51 flex h-4 w-full cursor-default items-center justify-center bg-white text-center text-xs before:absolute before:left-0 before:h-full before:w-full before:content-[''] data-[side=none]:before:-bottom-full dark:bg-neutral-950">
                 <ChevronDownIcon />
               </Select.ScrollDownArrow>
             </Select.Popup>
