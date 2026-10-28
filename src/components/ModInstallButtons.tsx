@@ -27,7 +27,7 @@ export function ModrinthInstallButton({ modId }: { modId: string }) {
     >
       <div
         className={
-          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#1bd96a] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
+          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1.5 rounded-xl border-0 bg-[#1bd96a] px-2.5 text-base leading-5 font-semibold whitespace-nowrap text-black no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out select-none"
         }
       >
         <svg
@@ -63,7 +63,7 @@ export function CurseforgeInstallButton({ addonId }: { addonId: number }) {
     >
       <div
         className={
-          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-0 bg-[#eb622b] px-2.5 font-semibold text-base text-black leading-5 no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out"
+          "relative inline-flex h-9 min-h-10! w-fit min-w-0 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1.5 rounded-xl border-0 bg-[#eb622b] px-2.5 text-base leading-5 font-semibold whitespace-nowrap text-black no-underline transition-[background-color,color,box-shadow,filter,opacity,transform] duration-150 ease-out select-none"
         }
       >
         <svg

@@ -46,7 +46,7 @@ export default async function ModCard({
           className="size-16 rounded-2xl md:size-24"
           loading="eager"
         />
-        <div className="min-w-0.5 max-w-0.5 shrink bg-fd-border" />
+        <div className="bg-fd-border max-w-0.5 min-w-0.5 shrink" />
         <div className="flex flex-col">
           <span className={"text-fd-primary text-sm md:text-2xl"}>{name}</span>
           <span className={"text-left text-[10px]/3.5 md:text-base"}>
