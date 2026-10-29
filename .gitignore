@@ -38,6 +38,8 @@ next-env.d.ts
 *.ini
 
 # Custom
-/cdn/
+/cdn/**/*.zip
+/cdn/**/*.jar
+/cdn/girls-server/
 /data/
 /reposilite-plugins/
