@@ -1,7 +1,7 @@
 {
   "homepage": "https://ramen.games/mods/game-knight",
   "26.3": {
-  	"0.0.4-alpha": "Fixed version parity between 26.3, 26.2, and 26.1.2",
+    "0.0.4-alpha": "Fixed version parity between 26.3, 26.2, and 26.1.2",
     "0.0.5-alpha": "Change links to point to new domain",
     "0.0.6-alpha": "Add legal move check to king moves",
     "0.0.7-alpha": "Fixed bitboard interpretation error because of signed longs in java",
@@ -18,7 +18,7 @@
     "0.0.8-alpha": "Added/completed castling validation method"
   },
   "26.1.2": {
-  	"0.0.4-alpha": "Fixed version parity between 26.3, 26.2, 26.1.2",
+    "0.0.4-alpha": "Fixed version parity between 26.3, 26.2, 26.1.2",
     "0.0.5-alpha": "Change links to point to new domain",
     "0.0.6-alpha": "Add legal move check to king moves",
     "0.0.7-alpha": "Fixed bitboard interpretation error because of signed longs in java",
