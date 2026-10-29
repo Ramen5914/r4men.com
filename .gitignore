@@ -39,3 +39,5 @@ next-env.d.ts
 
 # Custom
 /cdn/
+/data/
+/reposilite-plugins/
