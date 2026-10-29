@@ -18,6 +18,8 @@ services:
     environment:
       - JAVA_OPTS=-Xmx${REPOSILITE_MEMORY} ${JAVA_COMPOSE_OPTS}
       - REPOSILITE_OPTS=--port ${REPOSILITE_PORT} ${REPOSILITE_COMPOSE_OPTS}
+      - MOD_MANIFEST_WEBHOOK_URL=${MOD_MANIFEST_WEBHOOK_URL}
+      - MOD_MANIFEST_WEBHOOK_SECRET=${REPOSILITE_WEBHOOK_SECRET}
     volumes:
       - reposilite-data:/app/data
       - ./reposilite-plugins:/app/data/plugins:ro
