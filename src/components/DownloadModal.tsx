@@ -11,25 +11,20 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import { userAgentFromString } from "next/server";
 import type React from "react";
-import { getContents, getLatestVersion } from "@/api/maven";
+import { coerce, rcompare } from "semver";
 import { ModInstallButtons } from "@/components/ModInstallButtons";
+import { readModManifest } from "@/lib/readModManifest";
 
 export default async function DownloadModal({
   modId,
   modName,
   curseforgeId,
   modrinthId,
-  mcVersions,
-  modLoaders,
-  mavenPath,
 }: {
   modId: string;
   modName: string;
   curseforgeId?: number;
   modrinthId?: string;
-  mcVersions: { label: string; value: string }[];
-  modLoaders: { label: string; value: string }[];
-  mavenPath: string;
 }) {
   const headerList = await headers();
   const ua = headerList.get("user-agent") ?? "";
@@ -40,24 +35,34 @@ export default async function DownloadModal({
   const isMobile = device.type === "mobile";
   const isTablet = device.type === "tablet";
 
-  const latestModVersion = await getLatestVersion(mavenPath);
-  const details = await getContents(`${mavenPath}/${latestModVersion.version}`);
-  console.log(details);
+  const manifest = await readModManifest(modId);
+  const mcVersions = Object.keys(manifest.versions)
+    .sort((a, b) => {
+      const aVersion = coerce(a);
+      const bVersion = coerce(b);
 
-  if (details.type === "DIRECTORY") {
-    mcVersions = [];
-    for (const file of details.files.reverse()) {
-      if (file.name.endsWith(".jar")) {
-        const mcVersion = file.name.split(".jar")[0].split("-")[4];
-        mcVersions.push({
-          label: mcVersion,
-          value: mcVersion,
-        });
-      }
-    }
-  } else {
-    throw Error("Should be searching in a directory");
-  }
+      if (aVersion && bVersion) return rcompare(aVersion, bVersion);
+      if (aVersion) return -1;
+      if (bVersion) return 1;
+      return b.localeCompare(a, undefined, { numeric: true });
+    })
+    .map((version) => ({
+      label: version,
+      value: version,
+    }));
+  const modLoaders = [
+    ...new Set(
+      Object.values(manifest.versions).flatMap((loaders) =>
+        Object.keys(loaders),
+      ),
+    ),
+  ].map((loader) => ({
+    label: loader
+      .split(/[-_ ]+/)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" "),
+    value: loader,
+  }));
 
   return (
     <Dialog.Root>
