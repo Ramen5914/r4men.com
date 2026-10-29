@@ -1,8 +1,10 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
-
-import { manifestEventSchema } from "@/lib/modManifestEventSchema";
-import { updateModManifest } from "@/lib/updateModManifest";
+import { manifestRequestSchema } from "@/lib/modManifestEventSchema";
+import {
+  reconcileModManifests,
+  updateModManifest,
+} from "@/lib/updateModManifest";
 
 export const runtime = "nodejs";
 
@@ -55,7 +57,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const parsed = manifestEventSchema.safeParse(body);
+  const parsed = manifestRequestSchema.safeParse(body);
 
   if (!parsed.success) {
     return NextResponse.json(
@@ -71,10 +73,21 @@ export async function POST(request: Request) {
   }
 
   try {
+    if (parsed.data.operation === "reconcile") {
+      const result = await reconcileModManifests(directory, parsed.data);
+
+      return NextResponse.json({
+        ok: true,
+        operation: "reconcile",
+        ...result,
+      });
+    }
+
     const result = await updateModManifest(directory, parsed.data);
 
     return NextResponse.json({
       ok: true,
+      operation: parsed.data.operation,
       ...result,
     });
   } catch (error) {

@@ -1,16 +1,26 @@
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 import { rcompare, valid } from "semver";
-
 import {
   type ManifestEvent,
   manifestEventSchema,
+  type ReconcileEvent,
+  reconcileEventSchema,
 } from "./modManifestEventSchema";
+
 import {
   type ChannelKey,
   type ModManifest,
   modManifestSchema,
+  modNameSchema,
 } from "./modManifestSchema";
 
 const globalState = globalThis as typeof globalThis & {
@@ -151,6 +161,110 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
     return {
       mod: event.mod,
       lastUpdated: manifest.lastUpdated,
+    };
+  });
+}
+
+export function reconcileModManifests(
+  directory: string,
+  input: ReconcileEvent,
+) {
+  const event = reconcileEventSchema.parse(input);
+
+  return serialize(async () => {
+    const lastUpdated = new Date().toISOString();
+    const manifests = new Map<string, ModManifest>();
+
+    function getManifest(mod: string): ModManifest {
+      let manifest = manifests.get(mod);
+
+      if (!manifest) {
+        manifest = {
+          schemaVersion: 1,
+          lastUpdated,
+          versions: {},
+        };
+
+        manifests.set(mod, manifest);
+      }
+
+      return manifest;
+    }
+
+    // Construct replacement manifests entirely from the snapshot.
+    for (const build of event.builds) {
+      const manifest = getManifest(build.mod);
+
+      manifest.versions[build.minecraftVersion] ??= {};
+      const loaders = manifest.versions[build.minecraftVersion];
+
+      loaders[build.loader] ??= {
+        alphas: [],
+        betas: [],
+        releases: [],
+      };
+
+      const channels = loaders[build.loader];
+      const channel = channelToKey[build.channel];
+
+      channels[channel].push(build.version);
+    }
+
+    const channelKeys = ["alphas", "betas", "releases"] as const;
+
+    for (const manifest of manifests.values()) {
+      for (const loaders of Object.values(manifest.versions)) {
+        for (const channels of Object.values(loaders)) {
+          for (const channel of channelKeys) {
+            channels[channel] = [...new Set(channels[channel])].sort(
+              newestFirst,
+            );
+          }
+        }
+      }
+    }
+
+    await mkdir(directory, { recursive: true });
+
+    // Include existing manifests absent from the snapshot,
+    // so deleted mods receive an empty replacement.
+    const entries = await readdir(directory, {
+      withFileTypes: true,
+    });
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      if (!modNameSchema.safeParse(entry.name).success) continue;
+      if (manifests.has(entry.name)) continue;
+
+      const filePath = path.resolve(directory, entry.name, "manifest.json");
+
+      try {
+        await readFile(filePath, "utf8");
+      } catch (error) {
+        if (isMissingFile(error)) continue;
+        throw error;
+      }
+
+      getManifest(entry.name);
+    }
+
+    // Validate every replacement before writing any files.
+    for (const manifest of manifests.values()) {
+      modManifestSchema.parse(manifest);
+    }
+
+    for (const [mod, manifest] of manifests) {
+      await saveManifest(
+        path.resolve(directory, mod, "manifest.json"),
+        manifest,
+      );
+    }
+
+    return {
+      modCount: manifests.size,
+      buildCount: event.builds.length,
+      lastUpdated,
     };
   });
 }
