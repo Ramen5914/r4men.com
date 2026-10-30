@@ -34,12 +34,12 @@
     "0.1.2-alpha": "Only hide check highlight when king is selected"
   },
   "promos": {
-    "26.3-latest": "0.0.8-alpha",
-    "26.3-recommended": "0.0.8-alpha",
-    "26.2-latest": "0.0.8-alpha",
-    "26.2-recommended": "0.0.8-alpha",
-    "26.1.2-latest": "0.0.8-alpha",
-    "26.1.2-recommended": "0.0.8-alpha"
+    "26.3-latest": "0.1.2-alpha",
+    "26.3-recommended": "0.1.2-alpha",
+    "26.2-latest": "0.1.2-alpha",
+    "26.2-recommended": "0.1.2-alpha",
+    "26.1.2-latest": "0.1.2-alpha",
+    "26.1.2-recommended": "0.1.2-alpha"
   },
   "supportedVersions": "26.3 | 26.2 | 26.1.2"
 }
