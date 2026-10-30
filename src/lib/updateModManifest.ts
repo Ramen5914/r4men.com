@@ -33,6 +33,20 @@ const channelToKey: Record<ManifestEvent["channel"], ChannelKey> = {
   release: "releases",
 };
 
+function artifactKey(
+  event: Pick<
+    ManifestEvent,
+    "minecraftVersion" | "loader" | "channel" | "version"
+  >,
+): string {
+  return JSON.stringify([
+    event.minecraftVersion,
+    event.loader,
+    event.channel,
+    event.version,
+  ]);
+}
+
 function serialize<T>(task: () => Promise<T>): Promise<T> {
   const previous = globalState.modManifestUpdateQueue ?? Promise.resolve();
 
@@ -74,6 +88,7 @@ async function readManifest(filePath: string): Promise<ModManifest> {
       schemaVersion: 1,
       lastUpdated: new Date().toISOString(),
       versions: {},
+      artifacts: {},
     };
   }
 
@@ -129,6 +144,17 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
       channels[channel] = [
         ...new Set([...channels[channel], event.version]),
       ].sort(newestFirst);
+
+      const metadata = {
+        ...(event.uploadedAt ? { uploadedAt: event.uploadedAt } : {}),
+        ...(event.sizeBytes !== undefined
+          ? { sizeBytes: event.sizeBytes }
+          : {}),
+      };
+
+      if (Object.keys(metadata).length > 0) {
+        manifest.artifacts[artifactKey(event)] = metadata;
+      }
     } else {
       const loaders = manifest.versions[event.minecraftVersion];
 
@@ -152,6 +178,8 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
           delete manifest.versions[event.minecraftVersion];
         }
       }
+
+      delete manifest.artifacts[artifactKey(event)];
     }
 
     manifest.lastUpdated = new Date().toISOString();
@@ -183,6 +211,7 @@ export function reconcileModManifests(
           schemaVersion: 1,
           lastUpdated,
           versions: {},
+          artifacts: {},
         };
 
         manifests.set(mod, manifest);
@@ -208,6 +237,17 @@ export function reconcileModManifests(
       const channel = channelToKey[build.channel];
 
       channels[channel].push(build.version);
+
+      const metadata = {
+        ...(build.uploadedAt ? { uploadedAt: build.uploadedAt } : {}),
+        ...(build.sizeBytes !== undefined
+          ? { sizeBytes: build.sizeBytes }
+          : {}),
+      };
+
+      if (Object.keys(metadata).length > 0) {
+        manifest.artifacts[artifactKey(build)] = metadata;
+      }
     }
 
     const channelKeys = ["alphas", "betas", "releases"] as const;

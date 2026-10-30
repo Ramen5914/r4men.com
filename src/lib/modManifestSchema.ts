@@ -28,6 +28,13 @@ export const channelVersionsSchema = z
   })
   .strict();
 
+export const artifactMetadataSchema = z
+  .object({
+    uploadedAt: z.iso.datetime().optional(),
+    sizeBytes: z.number().int().nonnegative().optional(),
+  })
+  .strict();
+
 export const modManifestSchema = z
   .object({
     schemaVersion: z.literal(1),
@@ -36,6 +43,7 @@ export const modManifestSchema = z
       manifestKeySchema,
       z.record(manifestKeySchema, channelVersionsSchema),
     ),
+    artifacts: z.record(z.string().min(1), artifactMetadataSchema).default({}),
   })
   .strict();
 

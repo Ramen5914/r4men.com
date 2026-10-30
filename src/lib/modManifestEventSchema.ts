@@ -9,6 +9,8 @@ export const manifestBuildSchema = z
     loader: manifestKeySchema,
     channel: z.enum(["alpha", "beta", "release"]),
     version: z.string().min(1).max(128),
+    uploadedAt: z.iso.datetime().optional(),
+    sizeBytes: z.number().int().nonnegative().optional(),
   })
   .strict();
 
