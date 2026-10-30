@@ -18,9 +18,11 @@ import {
 
 import {
   type ChannelKey,
+  type ChannelVersion,
   type ModManifest,
   modManifestSchema,
   modNameSchema,
+  versionMetadataSchema,
 } from "./modManifestSchema";
 
 const globalState = globalThis as typeof globalThis & {
@@ -33,18 +35,20 @@ const channelToKey: Record<ManifestEvent["channel"], ChannelKey> = {
   release: "releases",
 };
 
-function artifactKey(
-  event: Pick<
-    ManifestEvent,
-    "minecraftVersion" | "loader" | "channel" | "version"
-  >,
-): string {
-  return JSON.stringify([
-    event.minecraftVersion,
-    event.loader,
-    event.channel,
-    event.version,
-  ]);
+function versionOf(entry: ChannelVersion): string {
+  return entry.version;
+}
+
+function versionEntry(
+  event: Pick<ManifestEvent, "version" | "uploadedAt" | "sizeBytes">,
+): ChannelVersion {
+  const metadata = {
+    version: event.version,
+    ...(event.uploadedAt ? { uploadedAt: event.uploadedAt } : {}),
+    ...(event.sizeBytes !== undefined ? { size: event.sizeBytes } : {}),
+  };
+
+  return versionMetadataSchema.parse(metadata);
 }
 
 function serialize<T>(task: () => Promise<T>): Promise<T> {
@@ -88,7 +92,6 @@ async function readManifest(filePath: string): Promise<ModManifest> {
       schemaVersion: 1,
       lastUpdated: new Date().toISOString(),
       versions: {},
-      artifacts: {},
     };
   }
 
@@ -141,20 +144,11 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
       };
       const channels = loaders[event.loader];
 
-      channels[channel] = [
-        ...new Set([...channels[channel], event.version]),
-      ].sort(newestFirst);
-
-      const metadata = {
-        ...(event.uploadedAt ? { uploadedAt: event.uploadedAt } : {}),
-        ...(event.sizeBytes !== undefined
-          ? { sizeBytes: event.sizeBytes }
-          : {}),
-      };
-
-      if (Object.keys(metadata).length > 0) {
-        manifest.artifacts[artifactKey(event)] = metadata;
-      }
+      const entry = versionEntry(event);
+      channels[channel] = channels[channel]
+        .filter((version) => versionOf(version) !== event.version)
+        .concat(entry)
+        .sort((a, b) => newestFirst(versionOf(a), versionOf(b)));
     } else {
       const loaders = manifest.versions[event.minecraftVersion];
 
@@ -162,7 +156,7 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
 
       if (channels) {
         channels[channel] = channels[channel].filter(
-          (version) => version !== event.version,
+          (version) => versionOf(version) !== event.version,
         );
 
         const hasVersions =
@@ -178,8 +172,6 @@ export function updateModManifest(directory: string, input: ManifestEvent) {
           delete manifest.versions[event.minecraftVersion];
         }
       }
-
-      delete manifest.artifacts[artifactKey(event)];
     }
 
     manifest.lastUpdated = new Date().toISOString();
@@ -211,7 +203,6 @@ export function reconcileModManifests(
           schemaVersion: 1,
           lastUpdated,
           versions: {},
-          artifacts: {},
         };
 
         manifests.set(mod, manifest);
@@ -236,18 +227,12 @@ export function reconcileModManifests(
       const channels = loaders[build.loader];
       const channel = channelToKey[build.channel];
 
-      channels[channel].push(build.version);
+      const entry = versionEntry(build);
 
-      const metadata = {
-        ...(build.uploadedAt ? { uploadedAt: build.uploadedAt } : {}),
-        ...(build.sizeBytes !== undefined
-          ? { sizeBytes: build.sizeBytes }
-          : {}),
-      };
-
-      if (Object.keys(metadata).length > 0) {
-        manifest.artifacts[artifactKey(build)] = metadata;
-      }
+      channels[channel] = channels[channel].filter(
+        (version) => versionOf(version) !== build.version,
+      );
+      channels[channel].push(entry);
     }
 
     const channelKeys = ["alphas", "betas", "releases"] as const;
@@ -256,8 +241,8 @@ export function reconcileModManifests(
       for (const loaders of Object.values(manifest.versions)) {
         for (const channels of Object.values(loaders)) {
           for (const channel of channelKeys) {
-            channels[channel] = [...new Set(channels[channel])].sort(
-              newestFirst,
+            channels[channel] = channels[channel].sort((a, b) =>
+              newestFirst(versionOf(a), versionOf(b)),
             );
           }
         }

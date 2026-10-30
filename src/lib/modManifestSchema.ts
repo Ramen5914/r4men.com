@@ -20,18 +20,21 @@ export const manifestKeySchema = z
     "Reserved identifier",
   );
 
-export const channelVersionsSchema = z
+export const versionMetadataSchema = z
   .object({
-    alphas: z.array(z.string().min(1).max(128)),
-    betas: z.array(z.string().min(1).max(128)),
-    releases: z.array(z.string().min(1).max(128)),
+    version: z.string().min(1).max(128),
+    uploadedAt: z.iso.datetime().optional(),
+    size: z.number().int().nonnegative().optional(),
   })
   .strict();
 
-export const artifactMetadataSchema = z
+export const channelVersionSchema = versionMetadataSchema;
+
+export const channelVersionsSchema = z
   .object({
-    uploadedAt: z.iso.datetime().optional(),
-    sizeBytes: z.number().int().nonnegative().optional(),
+    alphas: z.array(channelVersionSchema),
+    betas: z.array(channelVersionSchema),
+    releases: z.array(channelVersionSchema),
   })
   .strict();
 
@@ -43,10 +46,10 @@ export const modManifestSchema = z
       manifestKeySchema,
       z.record(manifestKeySchema, channelVersionsSchema),
     ),
-    artifacts: z.record(z.string().min(1), artifactMetadataSchema).default({}),
   })
   .strict();
 
 export type ModManifest = z.infer<typeof modManifestSchema>;
 
 export type ChannelKey = keyof z.infer<typeof channelVersionsSchema>;
+export type ChannelVersion = z.infer<typeof channelVersionSchema>;
