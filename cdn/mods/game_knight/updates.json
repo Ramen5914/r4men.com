@@ -7,7 +7,8 @@
     "0.0.7-alpha": "Fixed bitboard interpretation error because of signed longs in java",
     "0.0.8-alpha": "Added/completed castling validation method",
     "0.1.0-alpha": "Major changes to castling, pawn promotion/move gen, and debugging tools",
-    "0.1.1-alpha": "Added a highlight to the king when in check"
+    "0.1.1-alpha": "Added a highlight to the king when in check",
+    "0.1.2-alpha": "Only hide check highlight when king is selected"
   },
   "26.2": {
     "0.0.1-alpha": "First alpha build",
@@ -19,7 +20,8 @@
     "0.0.7-alpha": "Fixed bitboard interpretation error because of signed longs in java",
     "0.0.8-alpha": "Added/completed castling validation method",
     "0.1.0-alpha": "Major changes to castling, pawn promotion/move gen, and debugging tools",
-    "0.1.1-alpha": "Added a highlight to the king when in check"
+    "0.1.1-alpha": "Added a highlight to the king when in check",
+    "0.1.2-alpha": "Only hide check highlight when king is selected"
   },
   "26.1.2": {
     "0.0.4-alpha": "Fixed version parity between 26.3, 26.2, 26.1.2",
@@ -28,7 +30,8 @@
     "0.0.7-alpha": "Fixed bitboard interpretation error because of signed longs in java",
     "0.0.8-alpha": "Added/completed castling validation method",
     "0.1.0-alpha": "Major changes to castling, pawn promotion/move gen, and debugging tools",
-    "0.1.1-alpha": "Added a highlight to the king when in check"
+    "0.1.1-alpha": "Added a highlight to the king when in check",
+    "0.1.2-alpha": "Only hide check highlight when king is selected"
   },
   "promos": {
     "26.3-latest": "0.0.8-alpha",
