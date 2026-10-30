@@ -1,9 +1,12 @@
+"use server";
+
 import "server-only";
 
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
+  type ChannelVersions,
   type ModManifest,
   modManifestSchema,
   modNameSchema,
@@ -23,4 +26,14 @@ export async function readModManifest(mod: string): Promise<ModManifest> {
   const contents = await readFile(filePath, "utf8");
 
   return modManifestSchema.parse(JSON.parse(contents));
+}
+
+export async function readModManifestForSelection(
+  modId: string,
+  version: string,
+  loader: string,
+): Promise<ChannelVersions | null> {
+  const manifest = await readModManifest(modId);
+
+  return manifest.versions[version]?.[loader] ?? null;
 }

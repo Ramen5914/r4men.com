@@ -52,4 +52,5 @@ export const modManifestSchema = z
 export type ModManifest = z.infer<typeof modManifestSchema>;
 
 export type ChannelKey = keyof z.infer<typeof channelVersionsSchema>;
+export type ChannelVersions = z.infer<typeof channelVersionsSchema>;
 export type ChannelVersion = z.infer<typeof channelVersionSchema>;

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import { userAgentFromString } from "next/server";
 import { coerce, rcompare } from "semver";
+import AnimatedDownloadModalContent from "@/components/AnimatedDownloadModalContent";
 import { DownloadSelectors } from "@/components/DownloadSelectors";
 import { ModInstallButtons } from "@/components/ModInstallButtons";
 import { readModManifest } from "@/lib/readModManifest";
@@ -56,6 +57,19 @@ export default async function DownloadModal({
       .join(" "),
     value: loader,
   }));
+  const supportedLoadersByVersion = Object.fromEntries(
+    Object.entries(manifest.versions).map(([version, loaders]) => [
+      version,
+      Object.keys(loaders),
+    ]),
+  );
+  const supportedVersionsByLoader: Record<string, string[]> = {};
+  for (const [version, loaders] of Object.entries(manifest.versions)) {
+    for (const loader of Object.keys(loaders)) {
+      supportedVersionsByLoader[loader] ??= [];
+      supportedVersionsByLoader[loader].push(version);
+    }
+  }
 
   return (
     <Dialog.Root>
@@ -70,8 +84,8 @@ export default async function DownloadModal({
         <span className={"text-sm font-medium"}>Download</span>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Backdrop className="fixed inset-0 z-20 min-h-dvh bg-black/20 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-150 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/40" />
-        <Dialog.Popup className="bg-fd-card fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border transition-[scale,opacity] duration-100 ease-out md:w-auto">
+        <Dialog.Backdrop className="fixed inset-0 z-20 min-h-dvh bg-black/20 backdrop-blur-xs transition-[opacity,backdrop-filter] duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/40" />
+        <Dialog.Popup className="bg-fd-card fixed top-1/2 left-1/2 z-20 -mt-8 flex w-full max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl border transition-[scale,opacity] duration-300 ease-out data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0 md:w-auto">
           <div className={"flex flex-row justify-between gap-4 border-b p-6"}>
             <div className={"flex flex-row items-center gap-3"}>
               <Image
@@ -91,41 +105,53 @@ export default async function DownloadModal({
               </Dialog.Close>
             </div>
           </div>
-          <div className={"min-h-0 overflow-y-auto p-6"}>
-            <div className={"mx-auto flex w-full flex-col gap-4"}>
-              {isMobile || isTablet ? null : (
-                <>
-                  <ModInstallButtons
-                    curseforgeId={curseforgeId}
-                    modrinthId={modrinthId}
-                  />
-                  <div className={"flex items-center gap-4"}>
-                    <div
-                      className={
-                        "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
-                      }
-                    ></div>
-                    <span
-                      className={
-                        "text-fd-muted-foreground shrink-0 text-sm font-medium"
-                      }
-                    >
-                      <Dialog.Description>Download manually</Dialog.Description>
-                    </span>
-                    <div
-                      className={
-                        "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
-                      }
-                    ></div>
-                  </div>
-                </>
-              )}
-              <DownloadSelectors
-                mcVersions={mcVersions}
-                modLoaders={modLoaders}
-              />
+          <AnimatedDownloadModalContent>
+            <div
+              className={
+                "min-h-0 [scrollbar-width:none] overflow-y-auto p-6 [&::-webkit-scrollbar]:hidden"
+              }
+            >
+              <div className={"mx-auto flex w-full flex-col gap-4"}>
+                {isMobile || isTablet ? null : (
+                  <>
+                    <ModInstallButtons
+                      curseforgeId={curseforgeId}
+                      modrinthId={modrinthId}
+                    />
+                    <div className={"flex items-center gap-4"}>
+                      <div
+                        className={
+                          "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
+                        }
+                      ></div>
+                      <span
+                        className={
+                          "text-fd-muted-foreground shrink-0 text-sm font-medium"
+                        }
+                      >
+                        <Dialog.Description>
+                          Download manually
+                        </Dialog.Description>
+                      </span>
+                      <div
+                        className={
+                          "bg-fd-border flex h-0.5 w-full grow rounded-2xl"
+                        }
+                      ></div>
+                    </div>
+                  </>
+                )}
+                <DownloadSelectors
+                  modId={modId}
+                  modName={modName}
+                  mcVersions={mcVersions}
+                  modLoaders={modLoaders}
+                  supportedLoadersByVersion={supportedLoadersByVersion}
+                  supportedVersionsByLoader={supportedVersionsByLoader}
+                />
+              </div>
             </div>
-          </div>
+          </AnimatedDownloadModalContent>
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
